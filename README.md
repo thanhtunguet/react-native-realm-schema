@@ -4,7 +4,7 @@ Well-defined schema syntax for React Native Realm
 
 ```sh
 npm install react-native-realm-schema
-
+```
 
 or using yarn:
 
