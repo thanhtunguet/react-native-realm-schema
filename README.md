@@ -1,5 +1,7 @@
 # react-native-realm-schema
+
 Well-defined schema syntax for React Native Realm
+
 ## Installation
 
 ```sh
@@ -20,7 +22,7 @@ yarn add react-native-realm-schema
 {
   "compilerOptions": {
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "experimentalDecorators": true
   }
 }
 ```
@@ -29,16 +31,16 @@ yarn add react-native-realm-schema
 
   ```javascript
   module.exports = {
-    // ...
-    plugins: [
-      [
-        '@babel/plugin-proposal-decorators',
-        {
-          legacy: true,
-        },
-      ],
-    ]
-  }
+  // ...
+  plugins: [
+    [
+      '@babel/plugin-proposal-decorators',
+      {
+        legacy: true,
+      },
+    ],
+  ]
+}
   ```
 
 ## Usage
@@ -46,7 +48,7 @@ yarn add react-native-realm-schema
 ### Creating a schema
 
 ```typescript
-import {BaseSchema, RealmProperty, RealmSchema} from 'react-native-realm-schema';
+import { BaseSchema, RealmProperty, RealmSchema } from 'react-native-realm-schema';
 import nameof from 'ts-nameof.macro';
 
 @RealmSchema({
@@ -71,6 +73,29 @@ export class DeviceSchema extends BaseSchema {
 
 ```typescript
 const schema = DeviceSchema.schema;
+```
+
+### Create new schema object
+
+```typescript
+const deviceSchema = DeviceSchema.create();
+```
+
+### Schema name
+
+```typescript
+const schemaName = DeviceSchema.schemaName;
+```
+
+### Initialize Realm
+
+```typescript
+import { schemaListOf } from 'src/helpers';
+
+const realm = await Realm.open({
+  path: "myrealm",
+  schema: schemaListOf(DeviceSchema, OtherSchema, /* ... */),
+});
 ```
 
 ## Contributing

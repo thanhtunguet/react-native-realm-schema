@@ -12,6 +12,15 @@ export abstract class BaseSchema {
   }
 
   /**
+   * Get schema name of this class
+   *
+   * @type {string}
+   */
+  public static get schemaName(): string {
+    return this.schema.name;
+  }
+
+  /**
    * Create a new instance of this class
    *
    * instance instanceof BaseSchema will return true
