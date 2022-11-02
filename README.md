@@ -113,7 +113,7 @@ const database = new Database();
 const realm = await database.init();
 
 // or access using getter
-const realm = database.realm;
+database.realm;
 ```
 
 ## Contributing
