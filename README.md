@@ -56,7 +56,7 @@ import nameof from 'ts-nameof.macro';
   primaryKey: nameof(DeviceSchema.prototype._id),
 })
 export class DeviceSchema extends BaseSchema {
-  @RealmProperty('uuid', true)
+  @RealmProperty(/* dataType */ 'uuid', /* isRequired */ true)
   public _id: string;
 
   @RealmProperty('string')
@@ -70,9 +70,7 @@ export class DeviceSchema extends BaseSchema {
 ### Get schema object
 
 ```typescript
-import { getSchema } from 'src/helpers';
-
-const schema = getSchema(DeviceSchema);
+const schema = DeviceSchema.schema;
 ```
 
 ## Contributing
