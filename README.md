@@ -90,12 +90,30 @@ const schemaName = DeviceSchema.schemaName;
 ### Initialize Realm
 
 ```typescript
-import { schemaListOf } from 'src/helpers';
+import { RealmDatabase, schemaListOf } from 'src/helpers';
 
-const realm = await Realm.open({
-  path: "myrealm",
-  schema: schemaListOf(DeviceSchema, OtherSchema, /* ... */),
-});
+class Database extends RealmDatabase {
+  public get schemas() {
+    return schemaListOf(
+      DeviceSchema,
+      // ...
+    );
+  }
+
+  public get path(): string {
+    return 'my_realm'
+  }
+}
+
+const database = new Database();
+
+/**
+ * Initialize the database
+ */
+const realm = await database.init();
+
+// or access using getter
+const realm = database.realm;
 ```
 
 ## Contributing
