@@ -2,6 +2,12 @@ import type { PropertyType } from 'realm';
 import { getClassSchema } from './helpers';
 import { REALM_SYMBOL_PROPERTIES } from './symbols';
 
+/**
+ * Define a schema property
+ *
+ * @param type {PropertyType}
+ * @param required {boolean}
+ */
 export function RealmProperty(
   type: PropertyType,
   required: boolean = false

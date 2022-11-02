@@ -4,6 +4,11 @@ import type { ObjectSchema } from 'realm';
 import 'reflect-metadata';
 import { REALM_ID_FIELD, REALM_SYMBOL_SCHEMA } from './symbols';
 
+/**
+ * Define a schema object associated to a class
+ *
+ * @param options {SchemaInfo}
+ */
 export function RealmSchema(options: SchemaInfo): ClassDecorator {
   return function (target: Function & { schema?: ObjectSchema }) {
     const { primaryKey = REALM_ID_FIELD, name } = options;

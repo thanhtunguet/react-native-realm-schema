@@ -1,11 +1,11 @@
 import type { ObjectSchema } from 'realm';
-import { REALM_SYMBOL_PROPERTIES, REALM_SYMBOL_SCHEMA } from './symbols';
-import type { BaseSchema } from './BaseSchema';
+import { REALM_SYMBOL_PROPERTIES } from './symbols';
 
+/**
+ * Get schema properties of a class prototype
+ *
+ * @param target {Record<string, any>}
+ */
 export function getClassSchema(target: Object): ObjectSchema['properties'] {
   return Reflect.getMetadata(REALM_SYMBOL_PROPERTIES, target) ?? {};
-}
-
-export function getSchema(target: typeof BaseSchema): ObjectSchema {
-  return Reflect.getMetadata(REALM_SYMBOL_SCHEMA, target);
 }
